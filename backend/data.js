@@ -1,4 +1,19 @@
 export default {
+    users: [
+        {
+            name: 'harsh',
+            email: 'harsh.maru759@gmail.com',
+            password: '1234',
+            isAdmin : true,
+
+        },{
+            name: 'test',
+            email: 'test1@gmail.com',
+            password: '12345',
+            isAdmin : false,
+
+        }
+    ],
     products: [{
         _id:'1',
         name: 'PlayStation 5',

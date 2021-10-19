@@ -4,9 +4,20 @@ import { BrowserRouter ,Route ,Link} from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import ProductScreen from './Screens/ProductScreen';
 import CartScreen from './Screens/CartScreen';
+import ConsoleScreen from './Screens/ConsolesScreen';
+import SigninScreen from './Screens/SigninScreen';
+import { useSelector } from 'react-redux';
+import RegisterScreen from './Screens/RegisterScreen';
+import ShippingScreen from './Screens/ShippingScreen';
+import PaymentScreen from './Screens/PaymentScreen';
+import PlaceOrderScreen from './Screens/PlaceOrderScreen';
 
 
 function App() {
+
+  const userSignin = useSelector(state=>state.userSignin);
+  const {userInfo} = userSignin;
+
   const openMenu = ()=>{
     document.querySelector(".sidebar").classList.add("open")
   }
@@ -28,7 +39,13 @@ function App() {
                 <a href="games.html">Phones</a>
                 <a href="games.html">Laptops</a>
                 <a href="cart.html">Cart</a>
-                <a href="sigin.html">Sign In</a>
+                {
+                  userInfo ? <Link to="/profile">{userInfo.name}</Link>:
+
+                  <Link to="/signin">Sign In</Link> 
+                }
+                
+                {/* <a href="sigin.html">Sign In</a> */}
                 
             </div>
         </header>
@@ -37,8 +54,12 @@ function App() {
             <button className="sidebar-close-button" onClick={closeMenu}>X</button>
             <ul>
                 <div className="categorylist">
+                  <li>
+                    Shop by Categories
+                  </li>
                 <li>
-                    <a href="index.html">Gaming Consoles</a>
+                   Gaming
+                   
                 </li>
                 <li>
                     <a href="index.html">Camera</a>
@@ -52,9 +73,16 @@ function App() {
         </aside>
         <main className="main">
             <div className="content">
+            <Route path="/shipping" component={ShippingScreen}/>
+            <Route path="/payment" component={PaymentScreen}/>
+            <Route path="/placeorder" component={PlaceOrderScreen}/>
+
+              <Route path="/signin" component={SigninScreen}/>
+              <Route path="/register" component={RegisterScreen}/>
               <Route path="/product/:id" component={ProductScreen} />
               <Route path="/cart/:id?" component={CartScreen} />
               <Route path="/" exact={true} component={HomeScreen} />
+              <Route path="/gaming" component={ConsoleScreen} />
                 
             </div>
             
