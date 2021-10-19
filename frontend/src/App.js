@@ -35,9 +35,9 @@ function App() {
                 <Link to="/">Techtronux</Link>
             </div>
             <div className="header-links">
-                <a href="games.html">Game Consoles</a>
+                {/* <a href="games.html">Game Consoles</a>
                 <a href="games.html">Phones</a>
-                <a href="games.html">Laptops</a>
+                <a href="games.html">Laptops</a> */}
                 <a href="cart.html">Cart</a>
                 {
                   userInfo ? <Link to="/profile">{userInfo.name}</Link>:
